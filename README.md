@@ -18,11 +18,10 @@
 - Typescript
 - NextJS
 - SASS
-- pnpm
 
 # Projeto
 
-App web para ouvir nosso podcast.
+App web para ouvir podcasts.
 Esse projeto abarca algumas das principais funcionalidade do React e NextJS como: 
 * Geração estatica de website
 * Lidar com ContextApi
@@ -37,20 +36,29 @@ Você pode visualizar o layout do projeto através [desse link](https://www.figm
 
 ## Como Executar
 ```bash
-git clone https://github.com/WerterBonfim/NLW5-React-Native-Plant-Manager.git plant-mananger
+git clone https://github.com/WerterBonfim/NLW5-React-Next-podcastrnext.git podcastrnext
 
 
-cd plant-mananger
+cd podcastrnext
 
-# npm 
+# com npm 
 npm i
 
-# yarn
+# ou com yarn
 yarn install
 
-# pnpm 
+# ou com pnpm 
 pnpm i
 
+# para efetuar o startup você pode:
 
+
+# com npm
+npm start
+
+# ou com yarn
+yarn start
+
+# ou com pnpm
 pnpm start
 ```
