@@ -2,18 +2,19 @@
     
     "files.exclude": {
         "node_modules": true,
-        ".vscode": false,
+        ".vscode": true,
         ".gitignore": true,
         "package.json": false,
         "package-look.json": true,
         "yarn.lock": true,
         "public": true,
-        "readme.md": true,
+        "README.md": true,
         ".expo": true,
         ".expo-shared": true,
-        ".github": false,
+        ".github": true,
         "assets": true,
         "tsconfig.json": true,
         "babel.config.js": true,
+        ".next": true
     }
 }
