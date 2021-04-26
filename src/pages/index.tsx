@@ -1,9 +1,10 @@
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { api } from "../services/api";
 import { Episode, IEpisode } from '../interfaces/episode';
-import { convertDatabaseEpisodeToView } from '../conversors/databaseEpisodesToView';
+import { convertDatabaseEpisodesToView } from '../conversors/databaseEpisodesToView';
 
 import styles from './home.module.scss';
 
@@ -35,7 +36,9 @@ export default function Home({ allEpisodes, lastestEpisodes }: HomeProps) {
                 />
 
                 <div className={styles.episodeDetails}>
-                  <a href="">{episode.title}</a>
+                  <Link href={`/episodes/${episode.id}`} >
+                    <a>{episode.title}</a>
+                  </Link>
                   <p>{episode.members}</p>
                   <span>{episode.publishedAt}</span>
                   <span>{episode.durationAsString}</span>
@@ -60,12 +63,14 @@ export default function Home({ allEpisodes, lastestEpisodes }: HomeProps) {
 
         <table cellSpacing={0}>
           <thead>
-            <th></th>
-            <th>Podcast</th>
-            <th>Integrantes</th>
-            <th>Data</th>
-            <th>Duração</th>
-            <th></th>
+            <tr>
+              <th></th>
+              <th>Podcast</th>
+              <th>Integrantes</th>
+              <th>Data</th>
+              <th>Duração</th>
+              <th></th>
+            </tr>
 
           </thead>
 
@@ -85,15 +90,17 @@ export default function Home({ allEpisodes, lastestEpisodes }: HomeProps) {
                 </td>
 
                 <td>
-                  <a href="#">{episode.title}</a>
+                  <Link href={`/episodes/${episode.id}`} >
+                    <a>{episode.title}</a>
+                  </Link>
                 </td>
 
                 <td>{episode.members}</td>
-                <td style={{width: 100}} >{episode.publishedAt}</td>
+                <td style={{ width: 100 }} >{episode.publishedAt}</td>
                 <td>{episode.durationAsString}</td>
                 <td>
                   <button type="button">
-                    <img src="/play-green.svg" alt="Tocar episódio"/>
+                    <img src="/play-green.svg" alt="Tocar episódio" />
                   </button>
                 </td>
 
@@ -122,7 +129,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   });
 
-  const episodes = convertDatabaseEpisodeToView(data);
+  const episodes = convertDatabaseEpisodesToView(data);
   const lastestEpisodes = episodes.slice(0, 2);
   const allEpisodes = episodes.slice(2, episodes.length)
 

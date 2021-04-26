@@ -3,21 +3,24 @@ import ptBR from "date-fns/locale/pt-BR";
 import { Episode, IEpisode } from "../interfaces/episode";
 import { convertDurationToTimeString } from "../utils/convertDurationToTimeString";
 
-export function convertDatabaseEpisodeToView(data: IEpisode[]): Episode[] {
+export function convertDatabaseEpisodesToView(data: IEpisode[]): Episode[] {
 
-    const episodes = data.map(episode => {
-        return {
-            id: episode.id,
-            title: episode.title,
-            thumbnail: episode.thumbnail,
-            members: episode.members,
-            publishedAt: format(parseISO(episode.published_at.toString()), 'd MM yy', { locale: ptBR }),
-            duration: Number(episode.file.duration),
-            durationAsString: convertDurationToTimeString(Number(episode.file.duration)),
-            description: episode.description,
-            url: episode.file.url
-        } as Episode
-    })
-
+    const episodes = data.map(convertDatabaseEpisodeToView)
     return episodes;
+}
+
+export function convertDatabaseEpisodeToView(data: IEpisode): Episode {
+
+    return {
+        id: data.id,
+        title: data.title,
+        thumbnail: data.thumbnail,
+        members: data.members,
+        publishedAt: format(parseISO(data.published_at.toString()), 'd MM yy', { locale: ptBR }),
+        duration: Number(data.file.duration),
+        durationAsString: convertDurationToTimeString(Number(data.file.duration)),
+        description: data.description,
+        url: data.file.url
+    } as Episode
+
 }
