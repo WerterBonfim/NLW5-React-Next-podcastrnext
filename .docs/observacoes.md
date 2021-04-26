@@ -48,3 +48,11 @@ export async function getStaticProps() {
     }
 }
 ```
+
+# Nest Recursos
+
+* Image: Define a altura e largura que eu quero carregar 
+
+Como usar:
+
+Crie um arquivo na raiz da aplicação chamado: next.config.js para 
