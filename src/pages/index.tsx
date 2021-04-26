@@ -20,16 +20,16 @@ export default function Home({ allEpisodes, lastestEpisodes }: HomeProps) {
 
       <section className={styles.lastestEpisodes}>
         <h2>Últimos lançamentos</h2>
-        
+
         <ul>
           {lastestEpisodes.map(episode => {
 
             return (
               <li key={episode.id}>
-                <Image 
+                <Image
                   width={192}
-                  height={192}                  
-                  src={episode.thumbnail} 
+                  height={192}
+                  src={episode.thumbnail}
                   alt={episode.title}
                   objectFit="cover"
                 />
@@ -42,7 +42,7 @@ export default function Home({ allEpisodes, lastestEpisodes }: HomeProps) {
                 </div>
 
                 <button type="button">
-                  <img src="/play-green.svg" alt="Tocar episódio"/>
+                  <img src="/play-green.svg" alt="Tocar episódio" />
                 </button>
 
               </li>
@@ -55,6 +55,54 @@ export default function Home({ allEpisodes, lastestEpisodes }: HomeProps) {
 
 
       <section className={styles.allEpisodes}>
+
+        <h2>Todos episódios</h2>
+
+        <table cellSpacing={0}>
+          <thead>
+            <th></th>
+            <th>Podcast</th>
+            <th>Integrantes</th>
+            <th>Data</th>
+            <th>Duração</th>
+            <th></th>
+
+          </thead>
+
+          <tbody>
+
+            {allEpisodes.map(episode => (
+
+              <tr key={episode.id}>
+                <td style={{ width: 72 }} >
+                  <Image
+                    width={120}
+                    height={120}
+                    src={episode.thumbnail}
+                    alt={episode.title}
+                    objectFit="cover"
+                  />
+                </td>
+
+                <td>
+                  <a href="#">{episode.title}</a>
+                </td>
+
+                <td>{episode.members}</td>
+                <td style={{width: 100}} >{episode.publishedAt}</td>
+                <td>{episode.durationAsString}</td>
+                <td>
+                  <button type="button">
+                    <img src="/play-green.svg" alt="Tocar episódio"/>
+                  </button>
+                </td>
+
+              </tr>
+
+            ))}
+
+          </tbody>
+        </table>
 
       </section>
 
