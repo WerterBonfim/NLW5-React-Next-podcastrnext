@@ -16,7 +16,7 @@ export function convertDatabaseEpisodeToView(data: IEpisode): Episode {
         title: data.title,
         thumbnail: data.thumbnail,
         members: data.members,
-        publishedAt: format(parseISO(data.published_at.toString()), 'd MM yy', { locale: ptBR }),
+        publishedAt: format(parseISO(data.published_at.toString()), 'd MMM yy', { locale: ptBR }),
         duration: Number(data.file.duration),
         durationAsString: convertDurationToTimeString(Number(data.file.duration)),
         description: data.description,
