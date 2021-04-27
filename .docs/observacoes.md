@@ -54,5 +54,52 @@ export async function getStaticProps() {
 * Image: Define a altura e largura que eu quero carregar 
 
 Como usar:
+* Crie um arquivo na raiz da aplicação chamado: next.config.js para 
 
-Crie um arquivo na raiz da aplicação chamado: next.config.js para 
+
+
+
+# GetStaticPaths
+
+```typescript
+
+getStaticPaths: GetStaticPaths = async () => {
+    return {
+        // gera staticamente cada pagina listada abaixo,
+        // neste caso vai gerar a pagina tdd
+        // EX: tutoriais/[tdd]
+        paths: [     
+            {       
+                params: {
+                    slug: 'tdd'
+                }
+            }
+        ],
+        // 3 opções, true | false | 'blocking'
+        
+        // false -> se não retornado uma pagina estatica, resulta 
+        // em 404
+        
+        // true -> se não encontrar a pagina estatica, o next ira
+        // gerar pagina no lado do cliente (SPA), com isso 
+        // o usuário verá a página com um indicador de carregamento
+        // OBS: use o useRouter e a proprieade isFallback para 
+        // gerar uma mensagem de espera para o usuario
+
+        // blocking -> se a pagina estatica não for encontrada
+        // o servidor next ira gerar de forma identica ao SSR e
+        // cachear para futuras requisições
+        fallback: 'blocking'
+    }
+}
+
+```
+
+Resumo:
+* Se true -> Gera no Cliente 
+* Se false -> 404 caso não encontre a pagina estatica
+* blocking -> Gera dinamico (SSR) caso não esteja em cache
+* paths -> gerar as paginas listadas no momento do build
+
+
+Obs: Pesquisar varias estrategias e boas práticas do getStaticPaths

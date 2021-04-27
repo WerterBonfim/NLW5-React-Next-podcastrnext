@@ -7,6 +7,9 @@ import { Episode, IEpisode } from '../interfaces/episode';
 import { convertDatabaseEpisodesToView } from '../conversors/databaseEpisodesToView';
 
 import styles from './home.module.scss';
+import { useContext } from 'react';
+import { PlayerContext } from '../contexts/PlayerContext';
+import TimerUtils from '../utils/timer';
 
 type HomeProps = {
   lastestEpisodes: Episode[];
@@ -15,6 +18,8 @@ type HomeProps = {
 
 
 export default function Home({ allEpisodes, lastestEpisodes }: HomeProps) {
+
+  const { play } = useContext(PlayerContext);
 
   return (
     <div className={styles.homepage}>
@@ -44,7 +49,7 @@ export default function Home({ allEpisodes, lastestEpisodes }: HomeProps) {
                   <span>{episode.durationAsString}</span>
                 </div>
 
-                <button type="button">
+                <button type="button" onClick={() => play(episode)} >
                   <img src="/play-green.svg" alt="Tocar episódio" />
                 </button>
 
@@ -138,7 +143,7 @@ export const getStaticProps: GetStaticProps = async () => {
       lastestEpisodes,
       allEpisodes
     },
-    //revalidate: 60 * 60 * 8
+    revalidate: TimerUtils.fromHours(1)
   }
 
 

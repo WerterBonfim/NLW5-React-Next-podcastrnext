@@ -1,16 +1,16 @@
 export interface IEpisode {
-    id:          string;
-    title:       string;
-    members:     string;
+    id: string;
+    title: string;
+    members: string;
     published_at: Date;
-    thumbnail:   string;
+    thumbnail: string;
     description: string;
-    file:        File;    
+    file: File;
 }
 
 export interface File {
-    url:      string;
-    type:     Type;
+    url: string;
+    type: Type;
     duration: number;
 }
 
@@ -22,10 +22,18 @@ export type Episode = {
     id: string;
     title: string;
     thumbnail: string;
-    description: string;  
+    description: string;
     members: string;
     duration: number;
     durationAsString: string;
     url: string;
-    publishedAt: string;  
-  }
+    publishedAt: string;
+}
+
+export type EpisodePlayer = {
+    title: string;
+    members: string;
+    thumbnail: string;
+    duration: number;
+    url: string;
+}
