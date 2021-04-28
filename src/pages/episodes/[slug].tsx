@@ -11,13 +11,17 @@ import { Episode, IEpisode } from '../../interfaces/episode';
 import TimerUtils from '../../utils/timer';
 
 import styles from './episode.module.scss';
+import { userPlayer } from '../../contexts/PlayerContext';
 
 type EpisodesProps = {
     episode: Episode;
 }
 
 export default function Episodes({ episode }: EpisodesProps) {
-    const router = useRouter();
+    
+    const {
+        play
+    } = userPlayer();
 
     return (
         <div className={styles.episode}>
@@ -34,7 +38,11 @@ export default function Episodes({ episode }: EpisodesProps) {
                     objectFit="cover"
                 />
                 <button type="button">
-                    <img src="/play.svg" alt="Tocar episódio" />
+                    <img 
+                        src="/play.svg" 
+                        alt="Tocar episódio" 
+                        onClick={() => play(episode)}
+                    />
                 </button>
             </div>
 
