@@ -79,15 +79,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 
-    console.log('ctx', ctx)
-
     const { slug } = ctx.params;
 
     const { data } = await api.get<IEpisode>(`/episodes/${slug}`);
 
     const episode = convertDatabaseEpisodeToView(data);
 
-    console.log('episode', episode)
 
     return {
         props: {
