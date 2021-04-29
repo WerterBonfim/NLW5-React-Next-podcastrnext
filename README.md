@@ -50,17 +50,19 @@ yarn install
 # ou com pnpm 
 pnpm i
 
-# para efetuar o startup você pode:
+# para efetuar o startup você deve:
 
 
-# com npm
-npm start
+# levantando um backend fake com json-server
+yarn server
 
-# ou com yarn
+
+# levantando o app:
+# Abra outra aba do terminal e:
+
 yarn start
 
-# ou com pnpm
-pnpm start
+
 ```
 
 
