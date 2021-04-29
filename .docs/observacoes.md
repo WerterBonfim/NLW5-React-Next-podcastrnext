@@ -103,3 +103,20 @@ Resumo:
 
 
 Obs: Pesquisar varias estrategias e boas práticas do getStaticPaths
+
+
+# Meta tags
+
+É possivel usar qualquer meta tag dentro do component Head do next
+
+```typescript
+import Head from 'next/head';
+
+<>
+    <Head>
+        <title>{episode.title} | Podcastr </title>        
+    </Head>
+</>
+
+
+```

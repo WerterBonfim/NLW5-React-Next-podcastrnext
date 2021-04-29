@@ -62,3 +62,11 @@ yarn start
 # ou com pnpm
 pnpm start
 ```
+
+
+# Proximos passos
+
+* Responsivo
+* PWA
+* Temas (Dark)
+* Electron
